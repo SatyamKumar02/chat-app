@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h1 class="mb-4">Welcome to Chat App 💬</h1>
+
+    {% if current_user.is_authenticated %}
+        <p class="lead">Hey, {{ current_user.username }}! Ready to connect?</p>
+        <a href="{{ url_for('main.chat_home') }}" class="btn btn-primary btn-lg mt-3">Enter Chat Room</a>
+    {% else %}
+        <p class="lead">Sign up or log in to join the conversation.</p>
+        <a href="{{ url_for('auth.login') }}" class="btn btn-success btn-lg mt-3 me-2">Log In</a>
+        <a href="{{ url_for('auth.signup') }}" class="btn btn-outline-primary btn-lg mt-3">Sign Up</a>
+    {% endif %}
+</div>
+{% endblock %}
